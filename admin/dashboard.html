@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Dashboard | AS Financial Services</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="admin-shell" id="adminShell">
+    <div class="admin-backdrop" data-sidebar-close hidden></div>
+    <aside class="admin-side" id="adminSidebar" aria-label="Admin navigation">
+      <div class="admin-brand">
+        <img src="../assets/icons/favicon.svg" alt="">
+        <div>
+          <strong>AS Financial</strong>
+          <span>Admin Console</span>
+        </div>
+      </div>
+
+      <nav class="admin-nav" id="nav">
+        <p class="admin-nav__label">Workspace</p>
+        <button data-view="overview" class="is-active"><span class="nav-ico">◧</span> Overview</button>
+        <button data-view="followups"><span class="nav-ico">◷</span> Follow-ups <span class="nav-count" data-nav-count="followups"></span></button>
+        <button data-view="enquiries"><span class="nav-ico">☰</span> Customers / Enquiries</button>
+        <button data-view="applications"><span class="nav-ico">▤</span> Loan Applications</button>
+        <button data-view="categories"><span class="nav-ico">◈</span> Loan Categories</button>
+        <p class="admin-nav__label">Website</p>
+        <button data-view="banks"><span class="nav-ico">▥</span> Bank Management</button>
+        <button data-view="rates"><span class="nav-ico">%</span> Interest Rates</button>
+        <button data-view="analytics"><span class="nav-ico">◔</span> Website Analytics</button>
+        <button data-view="content"><span class="nav-ico">✎</span> Website Content</button>
+        <p class="admin-nav__label">Reports</p>
+        <button data-view="export"><span class="nav-ico">⇩</span> Export Reports</button>
+        <button data-view="logs"><span class="nav-ico">≡</span> Activity Logs</button>
+        <button data-view="settings"><span class="nav-ico">⚙</span> Settings</button>
+      </nav>
+
+      <div class="admin-side__foot">
+        <div class="admin-who">
+          <span class="admin-who__avatar" data-admin-initial>A</span>
+          <div>
+            <strong data-admin-name>Administrator</strong>
+            <span data-admin-role>admin</span>
+          </div>
+        </div>
+        <button class="btn btn--side" id="logoutBtn">Secure logout</button>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-top">
+        <div class="admin-top__left">
+          <button class="admin-menu" type="button" aria-label="Open navigation" data-sidebar-toggle>
+            <span></span><span></span><span></span>
+          </button>
+          <div>
+            <p class="admin-eyebrow">AS Financial Services</p>
+            <h1 id="viewTitle">Overview</h1>
+            <p id="adminMeta" class="admin-meta">Checking session…</p>
+          </div>
+        </div>
+        <div class="admin-top__right">
+          <span class="conn-badge" id="connBadge" title="Supabase session state"><i></i> Connected</span>
+          <a class="btn btn--ghost btn--sm" href="../index.html?cms_preview=1" target="_blank" rel="noopener">View website</a>
+        </div>
+      </header>
+
+      <div id="viewRoot" class="admin-view" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="toast-region" id="toastRoot" role="status" aria-live="polite"></div>
+  <div id="modalRoot"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script type="module" src="../js/admin/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login | AS Financial Services</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="admin-brand" style="color:#10264A"><img src="../assets/icons/favicon.svg" alt=""> AS Financial Admin</div>
+      <h1>Secure sign in</h1>
+      <p class="muted">Authorized administrators only. Customer data is protected.</p>
+      <div id="msg" class="notice hide" role="status"></div>
+      <form id="loginForm" novalidate>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required></div>
+        <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required>
+          <label style="font-weight:400;font-size:.9rem"><input type="checkbox" id="showPw"> Show password</label></div>
+        <div class="toolbar"><button class="btn btn--gold" type="submit" id="submitBtn">Sign in</button>
+          <button class="btn btn--ghost" type="button" id="forgotBtn">Forgot password</button></div>
+      </form>
+      <p class="muted" style="font-size:.85rem;margin-top:14px">This login uses Supabase Auth. Configure <code>js/supabase-config.js</code> and create an authorized <code>admin_profiles</code> record before use.</p>
+    </div>
+  </div>
+  <script type="module" src="../js/admin/login.js"></script>
+</body>
+</html>

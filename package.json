@@ -1,0 +1,21 @@
+{
+  "name": "as-financial-services",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cinematic multi-page website for AS Financial Services and Solutions, built with HTML, CSS, vanilla JavaScript, Three.js and GSAP.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "home-loans",
+    "financial-services",
+    "threejs",
+    "gsap",
+    "static-site"
+  ],
+  "license": "UNLICENSED"
+}

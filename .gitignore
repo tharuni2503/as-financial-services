@@ -1,0 +1,10 @@
+node_modules/
+npm-debug.log*
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
+# js/supabase-config.js is committed as a safe placeholder (no secrets).
+# Replace with your anon key/URL locally; never commit service_role keys.

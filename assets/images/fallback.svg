@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="AS Financial Services and Solutions">
+  <defs>
+    <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#DCECF5"/>
+      <stop offset="0.55" stop-color="#E9DDF0"/>
+      <stop offset="1" stop-color="#F3DCCB"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F8F4EC" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#F8F4EC" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#wash)"/>
+  <circle cx="980" cy="120" r="180" fill="#FFFFFF" opacity="0.22"/>
+  <circle cx="150" cy="700" r="220" fill="#FFFFFF" opacity="0.18"/>
+  <g opacity="0.9">
+    <path d="M300 500V370l300-150 300 150v130H300Z" fill="url(#roof)"/>
+    <rect x="540" y="420" width="120" height="80" rx="6" fill="#263D59" opacity="0.16"/>
+    <rect x="380" y="420" width="90" height="80" rx="6" fill="#FFFFFF" opacity="0.55"/>
+    <rect x="730" y="420" width="90" height="80" rx="6" fill="#FFFFFF" opacity="0.55"/>
+    <rect x="260" y="500" width="680" height="10" rx="5" fill="#263D59" opacity="0.1"/>
+  </g>
+  <g text-anchor="middle" font-family="Georgia, 'Times New Roman', serif">
+    <text x="600" y="640" font-size="64" fill="#263D59">AS Financial</text>
+    <text x="600" y="682" font-family="Manrope, 'Segoe UI', sans-serif" font-size="20" letter-spacing="6" fill="#263D59" opacity="0.55">SERVICES &amp; SOLUTIONS</text>
+  </g>
+</svg>
