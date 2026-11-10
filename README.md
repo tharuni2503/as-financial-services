@@ -28,7 +28,7 @@ Personal Loans, Home Loans, Business Loans, Education Loans, Mortgage Loans / Lo
 | `about.html` | Business story, values, approach and CTA. |
 | `contact.html` | Verified contact details, secure enquiry form (Supabase when configured), map/directions. |
 | `privacy.html` / `terms.html` | Policy and terms/disclaimers. |
-| `admin/login.html` | Authorized admin login (Supabase Auth). |
+| `admin/login.html` | Authorized admin login (Supabase Auth, plus a localhost-only preview when unconfigured). |
 | `admin/dashboard.html` | Admin dashboard/CRM (enquiries, applications, banks/rates, analytics, content, exports, logs). **Requires Supabase + authorized admin profile.** |
 
 All pages share header/footer via `js/components.js` and are marked with `data-page`.
@@ -78,6 +78,17 @@ Styles: `css/style.css` → `components.css` → `animations.css` → `responsiv
 The admin dashboard, live CMS, real enquiry storage and analytics are **not active until configured**. This repo includes both migrations, RLS/storage policies, the admin UI, the public CMS hydration layer, an optional Edge Function, and frontend integration.
 
 > **Status in this workspace:** Supabase credentials are not available, so live auth, RLS enforcement, Storage uploads, CMS writes and real-data exports could not be end-to-end tested here. Everything below is implemented and syntax/headless-audited; it must be verified against your project.
+
+### Local preview mode (localhost only)
+
+Until Supabase is configured, the admin UI can be reviewed locally:
+
+1. Run `node server.js` and open `http://127.0.0.1:5173/admin/login.html`.
+2. Click **Open preview dashboard** in the “Local preview available” box.
+3. The dashboard opens with a **Preview mode** badge and a banner. All views work, but data is empty, writes are rejected with “Preview mode: changes are not saved”, and uploads are disabled.
+4. **Sign out** clears the preview flag and returns to the login page.
+
+How it works: the flag `as_admin_preview_v1` is stored in `localStorage` and is honoured **only** when the hostname is `localhost`, `127.0.0.1`, `[::1]` or empty. On any other hostname the flag is ignored and the dashboard redirects to the real login. Preview mode does **not** authenticate against Supabase, does not enforce RLS, and must never be used as production security. Once `js/supabase-config.js` holds real values, use the normal Supabase sign-in; the preview box only appears when the backend is unconfigured.
 
 ### 1) Configure the frontend (anon key only)
 
@@ -273,3 +284,5 @@ Static site — deploy the `as-financial-services` folder to Netlify, Vercel, Gi
 - **Libraries (vendored):** Three.js r169 module (MIT, progressive hero enhancement), GSAP 3.12.5 + ScrollTrigger (GreenSock licence — review for commercial use), Lucide (ISC). Admin uses SheetJS (`xlsx`) via CDN for Excel export. Supabase JS is loaded via CDN ESM when configured.
 
 Lender names may appear for comparison; the site does **not** claim affiliation/endorsement/partnership. Always confirm terms with the lender.
+#   a s - f i n a n c i a l - s e r v i c e s  
+ 
