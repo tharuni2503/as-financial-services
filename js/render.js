@@ -448,13 +448,25 @@ export function renderFaqs() {
     )
     .join("");
 
-  list.addEventListener("toggle", (event) => {
-    const opened = event.target;
+  const enforceSingleOpen = (opened) => {
     if (!(opened instanceof HTMLDetailsElement) || !opened.open) return;
-    list.querySelectorAll("details[open]").forEach((item) => {
+    list.querySelectorAll("details.faq-item[open]").forEach((item) => {
       if (item !== opened) item.open = false;
     });
+  };
+
+  list.addEventListener("toggle", (event) => {
+    enforceSingleOpen(event.target);
   });
+
+  list.addEventListener("click", (event) => {
+    const summary = event.target.closest("summary");
+    if (!summary) return;
+    const details = summary.parentElement;
+    window.requestAnimationFrame(() => enforceSingleOpen(details));
+  });  (Wait, this is same logic, won't fix. Better to add click enforcement.) But I need to be careful.
+
+Actually easier: also listen for click on summary to enforce after native toggle. Small safe fix.
 }
 
 /* --------------------------------------------------------- shared content */
