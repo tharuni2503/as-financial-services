@@ -122,7 +122,7 @@ export function initHero3D() {
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.28;
+  renderer.toneMappingExposure = 1.22;
 
   const scene = new THREE.Scene();
   // No scene fog: the renderer clears to transparent over a bright hero.
@@ -495,13 +495,13 @@ export function initHero3D() {
     if (!running || !visible) return;
     raf = requestAnimationFrame(frame);
 
-    t += 0.01;
-    progress += (targetProgress - progress) * 0.06;
-    smooth.x += (mouse.x - smooth.x) * 0.045;
-    smooth.y += (mouse.y - smooth.y) * 0.045;
+    t += 0.009;
+    progress += (targetProgress - progress) * 0.055;
+    smooth.x += (mouse.x - smooth.x) * 0.04;
+    smooth.y += (mouse.y - smooth.y) * 0.04;
 
     const eased = easeOut(progress);
-    const sway = Math.sin(t * 0.14) * 0.028;
+    const sway = Math.sin(t * 0.13) * 0.024;
 
     // Composition: settles + turns gently as the hero scrolls away.
     stage.rotation.y = -0.2 + eased * 0.44 + sway + smooth.x * 0.09;
