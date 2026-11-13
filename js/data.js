@@ -42,16 +42,17 @@ export const business = {
 
 export const site = {
   siteName: "AS Financial Services and Solutions",
-  baseUrl: "https://example.com",
-  themeColor: "#263D59",
+  // Production URL (GitHub Pages project site). Update if a custom domain is configured.
+  baseUrl: "https://tharuni2503.github.io/as-financial-services",
+  themeColor: "#10264A",
   locale: "en_IN",
-  // Change this single value to update the response-time claim everywhere.
-  processHours: 48,
+  // Indicative service timeline reference used in copy; not a guarantee of lender decisions.
+  processHours: null,
   banksLastUpdated: "07 November 2026",
   ratesDisclaimer:
-    "Interest rates, loan amounts and fees shown are indicative samples for demonstration purposes only. They are not offers or quotes from any bank or NBFC. Actual rates and charges depend on the lender, applicant profile, credit assessment, property and prevailing policy. Please confirm current terms directly with the lender before applying.",
+    "Interest rates, loan amounts and fees shown are indicative samples for demonstration and comparison only. They are not offers or quotes from any bank or NBFC. Actual rates and charges depend on the lender, applicant profile, credit assessment, property and prevailing policy. Please confirm current terms directly with the lender before applying.",
   reviewDisclaimer:
-    "We only publish customer reviews that can be verified from our Google Business Profile. No reviews have been imported into this build yet.",
+    "We publish only customer feedback that can be verified from our public Google Business Profile. Verified reviews will appear here when available.",
 };
 
 export const navigationLinks = [
@@ -607,8 +608,8 @@ export const faqs = [
     a: "A balance transfer may be possible if another lender offers terms that better suit you. The benefit depends on the rate, remaining tenure, transfer charges and your eligibility.",
   },
   {
-    q: "What does the 48-hour timeline mean?",
-    a: "It is an indicative service timeline for an application journey, not a guarantee. Actual processing and sanction depend on lender policy, verification, eligibility and complete documentation.",
+    q: "How long does the process take?",
+    a: "Timelines vary by loan type, lender, verification requirements and how quickly documents are provided. We can explain the typical steps, but processing and sanction decisions are made by the lender and are not guaranteed within a fixed time.",
   },
   {
     q: "How are interest rates shown on this website determined?",
@@ -616,34 +617,13 @@ export const faqs = [
   },
 ];
 
-/**
- * Verified customer reviews only.
- * Add entries in this shape once reviews are confirmed and cleared for use:
- * { quote, name, city, rating, date, source: "Google", sourceUrl }
- * The carousel automatically uses these instead of the placeholder slides.
- */
+// Verified customer reviews only (sourced/confirmed from our public Google Business Profile).
+// Shape: { quote, name, city, rating, date, source: "Google", sourceUrl }
+// Do not add unverified or invented testimonials.
 export const verifiedReviews = [];
 
-export const testimonialPlaceholders = [
-  {
-    category: "Home loan journey",
-    quote:
-      "A verified Google review from a home loan client will appear in this space once it has been collected and cleared for publication.",
-    meta: "Review slot 01 · Awaiting verification",
-  },
-  {
-    category: "Balance transfer",
-    quote:
-      "This carousel is ready for a verified review about refinancing an existing home loan. We do not publish unverified or edited testimonials.",
-    meta: "Review slot 02 · Awaiting verification",
-  },
-  {
-    category: "Documentation support",
-    quote:
-      "A verified review about documentation and application support will appear here. The source link will point to our Google Business Profile.",
-    meta: "Review slot 03 · Awaiting verification",
-  },
-];
+// Kept empty intentionally: no unverified or placeholder testimonials are shown publicly.
+export const testimonialPlaceholders = [];
 
 export const contactConfig = {
   loanTypes: [

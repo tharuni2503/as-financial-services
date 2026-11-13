@@ -15,8 +15,6 @@ import {
 const icon = (name, className = "") =>
   `<i data-lucide="${name}" class="${className}" aria-hidden="true"></i>`;
 
-const placeholderBadge = `<span class="placeholder-badge" title="Placeholder — replace with verified information">Placeholder</span>`;
-
 export function renderHeader(activeKey = "") {
   const links = navigationLinks
     .map(
@@ -46,9 +44,6 @@ export function renderHeader(activeKey = "") {
         </nav>
 
         <div class="nav-actions">
-          <a class="nav-login" href="admin/login.html" title="Admin login" aria-label="Admin login">
-            ${icon("lock-keyhole")}<span>Login</span>
-          </a>
           <a class="btn btn--primary btn--sm nav-cta" href="contact.html?intent=apply">
             Apply Now ${icon("arrow-up-right")}
           </a>
@@ -91,7 +86,6 @@ export function renderHeader(activeKey = "") {
       </nav>
       <div class="mobile-drawer__foot">
         <a class="btn btn--primary btn--block" href="contact.html?intent=apply">Apply Now ${icon("arrow-up-right")}</a>
-        <a class="btn btn--ghost btn--block" href="admin/login.html">${icon("lock-keyhole")} Admin login</a>
         <p class="mobile-contact">
           ${icon("map-pin")} ${business.city}, ${business.region}
         </p>
@@ -136,14 +130,19 @@ export function renderFooter() {
              ${item.action === "whatsapp" ? 'target="_blank" rel="noopener noreferrer"' : ""}
              data-contact="${item.action}" ${item.verified ? "" : 'data-unverified="true"'}>
             ${icon(item.icon)}<span>${item.label}</span>
-            ${item.verified ? "" : '<span class="sr-only"> (placeholder contact detail)</span>'}
+            ${item.verified ? "" : '<span class="sr-only"> (contact detail to be confirmed)</span>'}
           </a>
-          ${item.verified ? "" : `<div class="footer-contact__note">Placeholder — update in js/data.js</div>`}
+          ${item.verified ? "" : `<div class="footer-contact__note">Contact detail to be confirmed</div>`}
         </li>`
     )
     .join("");
 
   return `
+    <div class="mobile-sticky-cta" data-mobile-sticky-cta>
+      <a class="btn btn--ghost btn--sm" href="tel:${business.phone.tel}" aria-label="Call ${business.phone.display}">${icon("phone")} Call</a>
+      <a class="btn btn--ghost btn--sm" href="https://wa.me/${business.whatsapp.number}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">${icon("message-circle")} WhatsApp</a>
+      <a class="btn btn--primary btn--sm" href="contact.html#enquiry" aria-label="Send enquiry">${icon("send")} Enquire</a>
+    </div>
     <footer class="site-footer">
       <div class="footer-glow" aria-hidden="true"></div>
       <div class="container footer-grid">
@@ -212,11 +211,11 @@ export function renderFooter() {
                   `<li><a href="${link.href}">${link.label}</a></li>`
               )
               .join("")}
+            <li><a href="admin/login.html" class="footer-admin-link">Admin</a></li>
           </ul>
         </div>
         <p class="footer-updated">
-          Bank information shown on this website is indicative and was last reviewed on
-          ${site.banksLastUpdated}. ${placeholderBadge}
+          Lender information shown on this website is indicative for comparison only and was last reviewed on ${site.banksLastUpdated}. Please confirm current rates, fees and eligibility directly with the lender.
         </p>
       </div>
     </footer>

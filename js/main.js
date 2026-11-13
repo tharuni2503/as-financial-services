@@ -22,7 +22,6 @@ import { initNavigation } from "./navigation.js";
 import { initCalculator } from "./calculator.js";
 import { initContactForm } from "./forms.js";
 import { initAnimations } from "./animations.js";
-import { initHero3D } from "./hero-3d.js";
 import { trackEvent } from "./backend.js";
 import { initCms } from "./cms.js";
 
@@ -66,29 +65,49 @@ const mount = () => {
   /* Reveal choreography after all sections exist. */
   initAnimations();
 
-  /* Premium 3D hero enhancement (progressive, reduced-motion/mobile safe). */
-  initHero3D();
+  /* Premium 3D hero enhancement (progressive, reduced-motion/mobile safe).
+   * Loaded dynamically only when the hero canvas exists so other pages never
+   * fetch the Three.js module. Fails gracefully if WebGL/module is unavailable. */
+  if (document.getElementById("hero-canvas")) {
+    import("./hero-3d.js")
+      .then(({ initHero3D }) => {
+        if (typeof initHero3D === "function") initHero3D();
+      })
+      .catch(() => {
+        /* Graceful fallback: hero remains fully usable without WebGL/3D. */
+      });
+  }
 
   /* Live CMS hydration (async). Static content stays as the fallback. */
   initCms().catch(() => {});
 
   // First-party analytics (privacy-conscious). No-ops if backend not configured.
-  if (!location.pathname.includes('/admin')) {
-    trackEvent('page_view', { title: document.title });
+  if (!location.pathname.includes("/admin")) {
+    trackEvent("page_view", { title: document.title });
     try {
-      const vk = localStorage.getItem('as_vk_day');
-      const day = new Date().toISOString().slice(0,10);
-      if (vk !== day) { localStorage.setItem('as_vk_day', day); trackEvent('unique_visit', { day }); }
+      const vk = localStorage.getItem("as_vk_day");
+      const day = new Date().toISOString().slice(0, 10);
+      if (vk !== day) {
+        localStorage.setItem("as_vk_day", day);
+        trackEvent("unique_visit", { day });
+      }
     } catch {}
-    document.addEventListener('click', (e) => {
-      const a = e.target.closest('a,button');
-      if (!a) return;
-      const href = (a.getAttribute('href')||'').toLowerCase();
-      if (href.startsWith('tel:')) trackEvent('phone_click', { href });
-      else if (href.includes('wa.me') || href.includes('whatsapp')) trackEvent('whatsapp_click', { href });
-      else if (href.includes('mailto:') || href.includes('google.com/maps')) trackEvent('contact_click', { href });
-      else if (a.matches('.btn--primary,[data-cta],.hero__actions .btn')) trackEvent('cta_click', { text: (a.textContent||'').trim().slice(0,60) });
-    }, { capture:true, passive:true });
+    document.addEventListener(
+      "click",
+      (e) => {
+        const a = e.target.closest("a,button");
+        if (!a) return;
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        if (href.startsWith("tel:")) trackEvent("phone_click", { href });
+        else if (href.includes("wa.me") || href.includes("whatsapp"))
+          trackEvent("whatsapp_click", { href });
+        else if (href.includes("mailto:") || href.includes("google.com/maps"))
+          trackEvent("contact_click", { href });
+        else if (a.matches(".btn--primary,[data-cta],.hero__actions .btn"))
+          trackEvent("cta_click", { text: (a.textContent || "").trim().slice(0, 60) });
+      },
+      { capture: true, passive: true }
+    );
   }
 
   refreshIcons();

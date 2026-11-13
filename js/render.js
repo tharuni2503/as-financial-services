@@ -319,23 +319,18 @@ function openServiceModal(modal, service, trigger) {
 /* ------------------------------------------------------------ testimonials */
 
 function reviewSlide(review, index) {
-  const isPlaceholder = !review.name;
   const content = `
     <div class="carousel__slide" role="group" aria-roledescription="slide" aria-label="Review ${index + 1}">
       <article class="review-card">
         <span class="review-card__quote">${icon("quote")}</span>
         <p class="review-card__category">${escapeHtml(review.category || "Client review")}</p>
-        <blockquote>“${escapeHtml(review.quote)}”</blockquote>
+        <blockquote>"${escapeHtml(review.quote)}"</blockquote>
         <div class="review-card__meta">
           <span class="review-card__verified">
             ${icon("badge-check")}
-            ${
-              isPlaceholder
-                ? escapeHtml(review.meta || "Awaiting verification")
-                : `${escapeHtml(review.name)}${review.city ? ` · ${escapeHtml(review.city)}` : ""}`
-            }
+            ${escapeHtml(review.name || "Verified customer")}${review.city ? ` · ${escapeHtml(review.city)}` : ""}
           </span>
-          <span>${isPlaceholder ? "Placeholder" : escapeHtml(review.source || "Google")}</span>
+          <span>${escapeHtml(review.source || "Google")}${review.date ? ` · ${escapeHtml(review.date)}` : ""}</span>
         </div>
       </article>
     </div>
@@ -347,7 +342,17 @@ export function renderTestimonials() {
   const root = document.querySelector("[data-carousel]");
   if (!root) return;
 
-  const reviews = verifiedReviews.length ? verifiedReviews : testimonialPlaceholders;
+  // Only verified reviews are shown publicly. If none, hide the carousel
+  // (the page keeps a verified Google Maps link/note for genuine feedback).
+  const reviews = Array.isArray(verifiedReviews) ? verifiedReviews : [];
+  if (!reviews.length) {
+    root.hidden = true;
+    root.setAttribute("aria-hidden", "true");
+    return;
+  }
+
+  root.hidden = false;
+  root.removeAttribute("aria-hidden");
   const track = root.querySelector("[data-carousel-track]");
   const dotsWrap = root.querySelector("[data-carousel-dots]");
   const live = root.querySelector("[data-carousel-live]");
@@ -456,7 +461,14 @@ export function renderFaqs() {
 
 export function renderProcessHours() {
   document.querySelectorAll("[data-process-hours]").forEach((el) => {
-    el.textContent = site.processHours;
+    if (site.processHours != null) {
+      el.textContent = site.processHours;
+    } else {
+      // No fixed-time promise: clear/hide the badge if no indicative value is set.
+      el.textContent = "";
+      const badge = el.closest(".process-badge, .hero-stat");
+      if (badge) badge.hidden = true;
+    }
   });
 }
 
@@ -521,7 +533,7 @@ export function initContactActions() {
           ? "The WhatsApp number"
           : "The email address";
     showToast(
-      `${label} is a placeholder and has not been verified yet. Update js/data.js with the confirmed business details before launch.`
+      `${label} is being confirmed. Please use the verified contact options shown on this page or try again shortly.`
     );
   });
 }

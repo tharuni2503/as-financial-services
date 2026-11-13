@@ -6,27 +6,27 @@
 @import url("fonts.css");
 
 :root {
-  /* Palette — AS Financial navy & gold */
-  --ivory: #faf8f2;
+  /* Palette — brighter premium navy & gold */
+  --ivory: #fdfbf6;
   --paper: #ffffff;
   --white: #ffffff;
-  --navy: #10264a;
-  --navy-deep: #07172f;
-  --ink: #0f1f3a;
-  --muted: #68758a;
-  --muted-light: #8894a6;
-  --powder: #eaf1f8;
-  --lavender: #eef2f7;
-  --peach: #f7efe3;
-  --sage: #edf3ee;
-  --copper: #d7a52e;
-  --copper-ink: #b8860b;
-  --copper-bright: #e8c96a;
-  --copper-soft: #dfbf74;
-  --gold: #d7a52e;
-  --line: rgba(16, 38, 74, 0.11);
-  --line-strong: rgba(16, 38, 74, 0.2);
-  --success: #2f6b4f;
+  --navy: #143a6b;
+  --navy-deep: #0b2447;
+  --ink: #102744;
+  --muted: #5f7088;
+  --muted-light: #8292a8;
+  --powder: #eef6ff;
+  --lavender: #f3f6fb;
+  --peach: #fff6ea;
+  --sage: #f1f8f2;
+  --copper: #e0b23a;
+  --copper-ink: #a97800;
+  --copper-bright: #f1d57a;
+  --copper-soft: #ead08a;
+  --gold: #e0b23a;
+  --line: rgba(20, 58, 107, 0.1);
+  --line-strong: rgba(20, 58, 107, 0.18);
+  --success: #2f7a57;
 
   /* Type */
   --font-sans: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
