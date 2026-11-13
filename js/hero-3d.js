@@ -316,14 +316,14 @@ export function initHero3D() {
     const panel = new THREE.Group();
     panel.position.set(x, y, z);
     panel.rotation.set(rx, ry, rz);
+    panel.userData.baseX = x;
     panel.userData.baseY = y;
+    panel.userData.baseRotY = ry;
     panel.userData.phase = x * 0.6 + y;
     panel.userData.depth = 0.4 + scale * 0.4;
 
     const glass = new THREE.Mesh(new THREE.PlaneGeometry(w, h), panelGlass);
     panel.add(glass);
-
-    panel.userData.baseX = x;
 
     // Gold frame — four thin bars instead of a line grid (catches the env).
     const frameMat = goldLine;
