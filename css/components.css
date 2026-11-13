@@ -3235,8 +3235,8 @@ body[data-page="contact"] .page-hero { background: linear-gradient(135deg, #f2f7
 .btn:hover { transform: translateY(-1px); }
 .btn--primary:hover { box-shadow: 0 14px 30px -18px rgba(16,38,74,.55); }
 .nav-link { position: relative; }
-.nav-link::after { content:""; position:absolute; left:0; bottom:-6px; width:100%; height:2px; background: linear-gradient(90deg,var(--copper),transparent); transform:scaleX(0); transform-origin:left; transition: transform .25s var(--ease); opacity:.9; }
-.nav-link:hover::after, .nav-link.is-active::after { transform:scaleX(1); }
+.nav-link::after { content:""; position:absolute; left:0; right:0; bottom:2px; height:2px; border-radius:999px; background: var(--copper); transform:scaleX(0); transform-origin:center; transition: transform .25s var(--ease), opacity .25s ease; opacity:.95; }
+.nav-link:hover::after, .nav-link:focus-visible::after, .nav-link.is-active::after { transform:scaleX(1); }
 .service-card, .why-card, .challenge-card, .guide-card, .bank-card { transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s; }
 .service-card:hover, .why-card:hover, .challenge-card:hover, .guide-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .service-card__media img, .why-card__media img { transition: transform .9s var(--ease); }
