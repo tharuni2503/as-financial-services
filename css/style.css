@@ -201,8 +201,9 @@ h1 {
 
 h2,
 .section-title {
-  font-size: clamp(2.1rem, 3.8vw, 3.5rem);
-  line-height: 1.1;
+  font-size: clamp(2.05rem, 3.6vw, 3.4rem);
+  line-height: 1.08;
+  text-wrap: balance;
 }
 
 h3 {
@@ -223,29 +224,32 @@ h2 em,
 }
 
 .lede {
-  font-size: clamp(1rem, 1.3vw, 1.14rem);
-  line-height: 1.75;
+  font-size: clamp(1rem, 1.25vw, 1.1rem);
+  line-height: 1.8;
   color: var(--muted);
+  max-width: 66ch;
+  text-wrap: pretty;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-ui);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--copper-ink);
 }
 
 .eyebrow::before {
   content: "";
-  width: 26px;
-  height: 1px;
+  width: 28px;
+  height: 1.5px;
+  border-radius: 99px;
   background: currentColor;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 .eyebrow--light {
@@ -265,29 +269,29 @@ h2 em,
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   align-items: end;
-  gap: clamp(24px, 5vw, 80px);
-  margin-bottom: clamp(38px, 5vw, 62px);
+  gap: clamp(22px, 4vw, 64px);
+  margin-bottom: clamp(34px, 4.5vw, 56px);
 }
 
 .section-head .eyebrow {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .section-head__aside {
-  max-width: 430px;
+  max-width: 46ch;
   justify-self: end;
 }
 
 .section-head__aside p {
   color: var(--muted);
   font-size: 0.98rem;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .section-head--center {
   display: block;
   text-align: center;
-  max-width: 760px;
+  max-width: 780px;
   margin-inline: auto;
 }
 
@@ -302,7 +306,8 @@ h2 em,
 
 .section-head--center .section-head__aside {
   justify-self: center;
-  margin-top: 20px;
+  max-width: 64ch;
+  margin-top: 16px;
 }
 
 .text-link {
@@ -430,8 +435,8 @@ h2 em,
   align-items: center;
   justify-content: center;
   gap: 9px;
-  min-height: 54px;
-  padding: 0 28px;
+  min-height: 52px;
+  padding: 0 26px;
   border: 1px solid transparent;
   border-radius: 14px;
   background: var(--btn-bg);
@@ -443,11 +448,16 @@ h2 em,
   line-height: 1.2;
   white-space: nowrap;
   transition:
-    transform 0.3s var(--ease),
-    box-shadow 0.3s var(--ease),
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
     background-color 0.25s ease,
     color 0.25s ease,
     border-color 0.25s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
 }
 
 .btn svg {
@@ -462,50 +472,51 @@ h2 em,
 }
 
 .btn--primary {
-  background: var(--navy);
+  background: linear-gradient(135deg, var(--navy), var(--navy-deep));
   color: var(--ivory);
-  box-shadow: 0 10px 24px -14px rgba(20, 58, 107, 0.45);
+  box-shadow: 0 12px 26px -16px rgba(20, 58, 107, 0.5);
 }
 
 .btn--primary:hover {
-  background: var(--navy-deep);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 30px -16px rgba(20, 58, 107, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 30px -16px rgba(20, 58, 107, 0.52);
 }
 
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.5);
   color: var(--navy);
-  border-color: var(--line-strong);
+  border-color: rgba(20, 58, 107, 0.16);
 }
 
 .btn--ghost:hover {
   background: var(--white);
-  border-color: rgba(20, 58, 107, 0.32);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px -18px rgba(20, 58, 107, 0.35);
+  border-color: rgba(20, 58, 107, 0.28);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px -18px rgba(20, 58, 107, 0.3);
 }
 
 .btn--light {
   background: var(--ivory);
   color: var(--navy);
+  border-color: rgba(255,255,255,0.4);
 }
 
 .btn--light:hover {
   background: var(--white);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px -20px rgba(9, 27, 56, 0.4);
 }
 
 .btn--outline-light {
-  background: transparent;
+  background: rgba(255,255,255,0.04);
   color: var(--ivory);
   border-color: rgba(248, 244, 236, 0.34);
 }
 
 .btn--outline-light:hover {
-  background: rgba(248, 244, 236, 0.08);
-  border-color: rgba(248, 244, 236, 0.6);
-  transform: translateY(-2px);
+  background: rgba(248, 244, 236, 0.1);
+  border-color: rgba(248, 244, 236, 0.58);
+  transform: translateY(-1px);
 }
 
 .btn--sm {

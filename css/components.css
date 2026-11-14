@@ -4756,3 +4756,161 @@ body[data-page="banks"] .page-hero::after {
 @media (prefers-reduced-motion: reduce) {
   .hero--cinematic::before { animation: none !important; }
 }
+
+/* --------------------------------------------------------------------------
+   Global refinement pass (shared components, visual consistency)
+   -------------------------------------------------------------------------- */
+.page-hero {
+  padding-block: clamp(120px, 16vw, 168px) clamp(54px, 7vw, 78px);
+}
+.page-hero::after {
+  opacity: 0.92;
+}
+.page-hero__inner {
+  max-width: 760px;
+}
+.page-hero h1 {
+  line-height: 1.03;
+  letter-spacing: -0.03em;
+}
+.page-hero .lede {
+  margin-top: 16px;
+  max-width: 62ch;
+}
+
+.cta-panel {
+  border: 1px solid rgba(248, 244, 236, 0.12);
+  border-radius: 28px;
+  padding: clamp(28px, 4vw, 48px);
+  box-shadow: 0 28px 60px -40px rgba(9, 27, 56, 0.55);
+}
+.cta-panel p {
+  max-width: 58ch;
+  line-height: 1.75;
+}
+.cta-panel__actions .btn {
+  min-width: 0;
+}
+
+.form-card {
+  border: 1px solid rgba(20, 58, 107, 0.1);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm);
+}
+.form-card__head p {
+  line-height: 1.75;
+}
+
+.why-card,
+.service-card,
+.bank-card,
+.challenge-card,
+.guide-card,
+.contact-tile,
+.review-card {
+  border-color: rgba(20, 58, 107, 0.1);
+}
+.why-card,
+.service-card,
+.challenge-card,
+.guide-card {
+  border-radius: 20px;
+}
+.why-card__body,
+.service-card__body {
+  padding: clamp(20px, 2.4vw, 26px);
+}
+.why-card h3,
+.service-card h3,
+.challenge-card h3,
+.guide-card h3,
+.process-step h3 {
+  color: var(--navy-deep);
+}
+.why-card p,
+.service-card p,
+.challenge-card p,
+.guide-card p,
+.process-step p,
+.review-card blockquote {
+  line-height: 1.7;
+}
+.service-card__tag {
+  backdrop-filter: blur(8px);
+}
+.service-card__foot .text-link,
+.why-card .text-link {
+  font-weight: 600;
+}
+
+.bank-card {
+  border-radius: 20px;
+  box-shadow: 0 12px 28px -24px rgba(16, 38, 74, 0.28);
+}
+.bank-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 38px -26px rgba(16, 38, 74, 0.32);
+}
+
+.process-step {
+  border: 1px solid rgba(20, 58, 107, 0.08);
+  border-radius: 18px;
+  padding: 18px 16px 16px;
+  background: rgba(255,255,255,0.45);
+}
+.process-step__num {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.process-step__icon {
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55);
+}
+
+.review-card {
+  border: 1px solid rgba(20, 58, 107, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 14px 30px -26px rgba(16, 38, 74, 0.22);
+}
+
+.contact-tile {
+  border-radius: 16px;
+}
+.contact-tile h3 {
+  color: var(--navy-deep);
+}
+.map-panel {
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm);
+}
+.map-panel__info {
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+.field input,
+.field select,
+.field textarea {
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: rgba(20, 58, 107, 0.22);
+}
+
+.table-wrap {
+  border-radius: 18px;
+  border: 1px solid rgba(20, 58, 107, 0.1);
+  box-shadow: var(--shadow-xs);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bank-card:hover,
+  .process-step,
+  .contact-tile,
+  .field input,
+  .field select,
+  .field textarea {
+    transition: none !important;
+  }
+}

@@ -1015,3 +1015,18 @@
   body{padding-bottom:88px}
   .toast-region{bottom:96px}
 }
+
+/* Global refinement pass - responsive polish */
+@media (max-width: 900px) {
+  .page-hero { padding-block: calc(var(--nav-h) + 36px) 40px; }
+  .cta-panel { border-radius: 22px; }
+  .process-step { padding: 16px 14px; }
+}
+
+@media (max-width: 560px) {
+  .page-hero__inner { max-width: 100%; }
+  .page-hero .lede { font-size: 0.98rem; }
+  .form-card { border-radius: 18px; }
+  .contact-tile { padding: 16px; }
+  .map-panel__info { left: 12px; right: 12px; bottom: 12px; max-width: none; }
+}

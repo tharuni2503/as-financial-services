@@ -464,9 +464,7 @@ export function renderFaqs() {
     if (!summary) return;
     const details = summary.parentElement;
     window.requestAnimationFrame(() => enforceSingleOpen(details));
-  });  (Wait, this is same logic, won't fix. Better to add click enforcement.) But I need to be careful.
-
-Actually easier: also listen for click on summary to enforce after native toggle. Small safe fix.
+  });
 }
 
 /* --------------------------------------------------------- shared content */
